@@ -5,7 +5,7 @@
 * Express
 * Core
 * JWT - (JSON WEB TOKEN)
-* Nodeman
+* Nodemon
 * ORM Prisma
 * PostgreSQL
 * Postbird
