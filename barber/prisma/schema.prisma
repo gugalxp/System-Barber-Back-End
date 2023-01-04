@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id String @id @default(uuid())
+  name String
+  email String
+  endereco String?
+  password String
+  assinaturaPlanoBarber String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  @@map("users")
+
+  //Relações
+  subscriptions Subscription? 
+  haircuts HairCut[] //O colchetes significa que o usuário pdoe ter vários tipos de cortes de cabelo
+  services Service[]
+}
+
+model Subscription {
+  id String @id
+  status String
+  priceId String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+   @@map("subscriptions")
+
+  //Relações
+   userId String @unique
+   user User @relation(fields: [userId], references: [id])
+}
+
+model HairCut{
+  id String @id @default(uuid())
+  name String
+  price Float
+  status Boolean @default(true)
+
+  @@map("haircuts")
+   
+   //Relações
+   userId String @unique
+   user User @relation(fields: [userId], references: [id])
+   services Service[]
+}
+
+model Service {
+  id String @id @default(uuid())
+  Customer String
+  created_at DateTime @default(now()) 
+  updated_at DateTime @default(now())
+
+  @@map("services")
+
+  //Relações
+  haircut_id String
+  haircut HairCut @relation(fields: [haircut_id], references: [id])
+
+  userId String @unique
+  user User @relation(fields: [userId], references: [id])
+
+}
