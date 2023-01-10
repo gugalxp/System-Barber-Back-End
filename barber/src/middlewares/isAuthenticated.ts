@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
 
 interface Payload{
-    sub: String;
+    sub: string;
 }
 
 export function isAuthenticated(req: Request, res: Response, next: NextFunction) {
@@ -14,12 +14,12 @@ export function isAuthenticated(req: Request, res: Response, next: NextFunction)
     }
 
     const [, token] = authToken.split(" ");
-    console.log(token)
 
     try {
-
+        
         const { sub } = verify(token, process.env.JWT_SECRET) as Payload;   
-        console.log(sub)     
+        req.user_id = sub; 
+        return next();
 
     } catch (err) {
         
