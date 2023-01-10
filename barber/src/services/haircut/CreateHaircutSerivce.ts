@@ -17,7 +17,7 @@ class CreateHaircuitService {
             data: {
                 name: name,
                 price: price,
-                user_id: user_id,
+                userId: user_id,
             }
         });
 

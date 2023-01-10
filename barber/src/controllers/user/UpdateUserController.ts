@@ -8,6 +8,8 @@ class UpdateUserController {
         const { name, endereco } = request.body;
         const user_id = request.user_id;
 
+        console.log(user_id)
+
         const updateUserService = new UpadateUserService();
         const user = await updateUserService.execute({
            user_id,

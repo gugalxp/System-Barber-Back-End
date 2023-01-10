@@ -15,7 +15,7 @@ router.get('/detalhesUserLogado', isAuthenticated, new DetailUserController().ha
 
 router.put('/updateInformacoesUsuario', isAuthenticated, new UpdateUserController().handle)
 
-router.post('/haircut', new CreateHaircutController().handle)
+router.post('/haircut', isAuthenticated,  new CreateHaircutController().handle)
 
 
 export { router };
