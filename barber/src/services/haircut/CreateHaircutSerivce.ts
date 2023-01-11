@@ -13,6 +13,27 @@ class CreateHaircuitService {
             throw new Error("O campo name ou o campo price está vazio.");
         }
 
+        const myHaircuts = await prismaClient.hairCut.count({
+            where:{
+                userId: user_id,
+            }
+        });
+
+        const user = await prismaClient.user.findFirst({
+            where: {
+                id: user_id
+            },
+            include:{
+                subscriptions: true
+            }
+        });
+
+
+        
+        if (myHaircuts >= 3 && user?.subscriptions?.status ==! 'active') {
+            throw new Error("Não autorizado!");
+        }
+
         const haircuit = await prismaClient.hairCut.create({
             data: {
                 name: name,
