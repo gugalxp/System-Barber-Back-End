@@ -28,7 +28,6 @@ class CreateHaircuitService {
             }
         });
 
-
         
         if (myHaircuts >= 3 && user?.subscriptions?.status ==! 'active') {
             throw new Error("Não autorizado!");

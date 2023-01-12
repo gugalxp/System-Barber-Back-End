@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "haircuts" ALTER COLUMN "status" DROP DEFAULT,
+ALTER COLUMN "status" SET DATA TYPE TEXT;

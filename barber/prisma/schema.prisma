@@ -47,7 +47,7 @@ model HairCut{
   id String @id @default(uuid())
   name String
   price Float
-  status Boolean @default(true)
+  status Boolean @default(true) 
 
   @@map("haircuts")
    

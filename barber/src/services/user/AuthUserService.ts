@@ -12,7 +12,7 @@ class AuthUserService {
         
         const user = await prismaClient.user.findFirst({
             where:{
-            email: email 
+                email: email 
             },
             include: {
             subscriptions: true
