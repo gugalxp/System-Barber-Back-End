@@ -37,7 +37,6 @@ model Subscription {
   updated_at DateTime @default(now())
 
    @@map("subscriptions")
-
   //Relações
    userId String @unique
    user User @relation(fields: [userId], references: [id])
@@ -48,11 +47,13 @@ model HairCut{
   name String
   price Float
   status Boolean @default(true) 
-
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+  
   @@map("haircuts")
    
    //Relações
-   userId String @unique
+   userId String 
    user User @relation(fields: [userId], references: [id])
    services Service[]
 }
@@ -68,8 +69,7 @@ model Service {
   //Relações
   haircut_id String
   haircut HairCut @relation(fields: [haircut_id], references: [id])
-
-  userId String @unique
+  userId String 
   user User @relation(fields: [userId], references: [id])
 
 }

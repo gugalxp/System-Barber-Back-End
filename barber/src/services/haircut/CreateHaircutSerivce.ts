@@ -28,14 +28,13 @@ class CreateHaircuitService {
             }
         });
 
-        
-        if (myHaircuts >= 3 && user?.subscriptions?.status ==! 'active') {
-            throw new Error("Não autorizado!");
+        if (myHaircuts >= 3 && user?.subscriptions?.status !== 'active') {
+            throw new Error("Não autorizado!"); 
         }
 
         const haircuit = await prismaClient.hairCut.create({
             data: {
-                name: name,
+                name: name, 
                 price: price,
                 userId: user_id,
             }
