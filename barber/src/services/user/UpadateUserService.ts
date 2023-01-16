@@ -17,7 +17,7 @@ class UpadateUserService {
             });
 
             if (!userAlreadyExists) {
-                throw new Error("O usuario não existe");
+                throw new Error("Este usuario não existe");
             }
 
             const userUpdated = await prismaClient.user.update({
@@ -38,7 +38,6 @@ class UpadateUserService {
             return userUpdated;
             
         } catch (err) {
-            console.error(err);
             throw new Error("Erro ao tentar atualizar dados do usuario!");
             
         }

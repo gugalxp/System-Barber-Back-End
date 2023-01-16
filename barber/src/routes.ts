@@ -5,6 +5,10 @@ import { DetailUserController } from "./controllers/user/DetailUserController";
 import { isAuthenticated } from "../src/middlewares/isAuthenticated";
 import { UpdateUserController } from "../src/controllers/user/UpdateUserController"
 import { CreateHaircutController } from "../src/controllers/haircut/CreateHaircutController";
+import { ListarHaircutController } from "../src/controllers/haircut/ListarHaircutController";
+import { UpadateHaircutController } from "../src/controllers/haircut/UpdateHaircutController";
+
+
 const router = Router();
 
 router.post('/users', new CreateUserController().handle)
@@ -13,7 +17,12 @@ router.post('/users/login', new AuthUserController().handle)
 
 router.get('/detalhesUserLogado', isAuthenticated, new DetailUserController().handle)
 
+router.get('/listarHaircut', isAuthenticated, new ListarHaircutController().handle)
+
 router.put('/updateInformacoesUsuario', isAuthenticated, new UpdateUserController().handle)
+
+router.put('/updateHaircut', isAuthenticated, new UpadateHaircutController().handle)
+
 
 router.post('/haircut', isAuthenticated,  new CreateHaircutController().handle)
 
