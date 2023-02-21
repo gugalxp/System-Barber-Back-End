@@ -10,6 +10,9 @@ import { UpadateHaircutController } from "../src/controllers/haircut/UpdateHairc
 import { CheckSubscriptionController } from "./controllers/haircut/CheckSubscriptionController"
 import { CountHaircutController } from "./controllers/haircut/CountHaircutController"
 import { DetailHaircutController } from "./controllers/haircut/DetailHaircutController"
+import { NewScheduleController } from "./controllers/schedule/NewScheduleController"
+import { ListScheduleController } from "./controllers/schedule/ListScheduleController";
+import { FinishScheduleController } from "./controllers/schedule/FinishScheduleController";
 
 const router = Router();
 
@@ -31,7 +34,13 @@ router.get('/countHaircut', isAuthenticated, new CountHaircutController().handle
 
 router.get('/detailsHaircut', isAuthenticated, new DetailHaircutController().handle)
 
+router.get('/listSchedule', isAuthenticated, new ListScheduleController().handle)
+
 router.post('/haircut', isAuthenticated, new CreateHaircutController().handle)
+
+router.post('/newSchedule', isAuthenticated, new NewScheduleController().handle)
+
+router.delete('/finishSchedule', isAuthenticated, new FinishScheduleController().handle)
 
 
 export { router };

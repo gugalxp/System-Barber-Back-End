@@ -7,7 +7,7 @@ interface HaircutRequest {
 }
 
 class CreateHaircuitService {
-     async execute({user_id, name, price}: HaircutRequest) {
+    async execute({user_id, name, price}: HaircutRequest) {
 
         if (!name || !price) {
             throw new Error("O campo name ou o campo price está vazio.");
@@ -41,7 +41,6 @@ class CreateHaircuitService {
         });
 
         return haircuit;
-     }
+    }
 }
-
 export { CreateHaircuitService }

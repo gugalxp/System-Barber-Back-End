@@ -60,16 +60,15 @@ model HairCut{
 
 model Service {
   id String @id @default(uuid())
-  Customer String
+  customer String
   created_at DateTime @default(now()) 
   updated_at DateTime @default(now())
 
   @@map("services")
-
   //Relações
-  haircut_id String
   haircut HairCut @relation(fields: [haircut_id], references: [id])
-  userId String 
+  haircut_id String
   user User @relation(fields: [userId], references: [id])
+  userId String 
 
 }
