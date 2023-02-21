@@ -56,5 +56,3 @@ class AuthUserService {
 }
 
 export {AuthUserService}
-
-
